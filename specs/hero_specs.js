@@ -14,6 +14,8 @@ describe("Hero Tests", function(){
     this.food2 = new Food("Rack of Ribs", 10);
     this.task = new Task("Locate Zsolt the Barbarian", "Travel to Skurdurf and find the barbarian Zsolt. I heard he may have quests available for travellers. Often times he can be found in the local pub - the Python Pit", "Easy", "Low", "Nothing");
     this.hero.currentLocation = this.location;
+    this.location.addlinkedLocations(this.location2);
+    this.location2.addlinkedLocations(this.location);
   });
 
   it("hero has name", function(){
@@ -25,7 +27,6 @@ describe("Hero Tests", function(){
   })
 
   it("hero has current location", function(){
-
     assert.deepEqual("River Bank", this.hero.currentLocation.name);
   })
 
@@ -69,6 +70,21 @@ describe("Hero Tests", function(){
   it("hero can add task", function(){
     this.hero.addTask(this.task);
     assert.deepEqual(1, this.hero.tasks.length);
+  })
+
+  it("hero can travel", function(){
+    this.hero.travel(this.location2);
+    assert.deepEqual("Skurdurf", this.hero.currentLocation.name);
+  })
+
+  it("hero has toLvl", function(){
+    assert.deepEqual(100, this.hero.toLvl);
+  })
+
+  it("hero can level up", function(){
+    this.hero.updateToLvl(100);
+    assert.deepEqual(200, this.hero.toLvl);
+    assert.deepEqual(2, this.hero.level);
   })
 
 
