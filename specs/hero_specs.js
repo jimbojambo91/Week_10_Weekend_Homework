@@ -2,14 +2,18 @@ var assert = require('assert')
 var Hero = require('../hero.js')
 var Food = require('../food.js')
 var Task = require('../task.js')
+var Location = require('../location.js')
 
 describe("Hero Tests", function(){
 
   beforeEach(function() {
+    this.location = new Location("River Bank");
+    this.location2 = new Location("Skurdurf");
     this.hero = new Hero("Ser Baristan the Bold", "Chicken");
     this.food = new Food("Chicken", 10);
     this.food2 = new Food("Rack of Ribs", 10);
     this.task = new Task("Locate Zsolt the Barbarian", "Travel to Skurdurf and find the barbarian Zsolt. I heard he may have quests available for travellers. Often times he can be found in the local pub - the Python Pit", "Easy", "Low", "Nothing");
+    this.hero.currentLocation = this.location;
   });
 
   it("hero has name", function(){
@@ -19,6 +23,12 @@ describe("Hero Tests", function(){
   it("hero has favourite food", function(){
     assert.deepEqual("Chicken", this.hero.favFood);
   })
+
+  it("hero has current location", function(){
+
+    assert.deepEqual("River Bank", this.hero.currentLocation.name);
+  })
+
 
   it("hero's health starts at 100", function(){
     assert.deepEqual(100, this.hero.health);
@@ -60,6 +70,7 @@ describe("Hero Tests", function(){
     this.hero.addTask(this.task);
     assert.deepEqual(1, this.hero.tasks.length);
   })
+
 
 
 
