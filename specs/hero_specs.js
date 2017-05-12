@@ -87,6 +87,22 @@ describe("Hero Tests", function(){
     assert.deepEqual(2, this.hero.level);
   })
 
+  it("hero has SkilltoLvl", function(){
+    assert.deepEqual(100, this.hero.skills.strength.toLvl);
+  })
+
+  it("hero has Skill Level", function(){
+    assert.deepEqual(1, this.hero.skills.strength.level);
+  })
+
+  it("hero can level up skill", function(){
+    this.hero.updateToSkillLvl(100, "strength");
+    assert.deepEqual(200, this.hero.skills.strength.toLvl);
+    assert.deepEqual(2, this.hero.skills.strength.level);
+  })
+
+
+
 
 
 
