@@ -4,7 +4,7 @@ var Task = require('../task.js')
 describe("Task Tests", function(){
 
   beforeEach(function() {
-    this.task = new Task("Locate Zsolt the Barbarian", "Travel to Skurdurf and find the barbarian zsolt. I heard he may have quests available for travellers. Often times he can be found in the local pub - the Python Pit", "Easy", "Low", "Nothing");
+    this.task = new Task("Locate Zsolt the Barbarian", "Travel to Skurdurf and find the barbarian Zsolt. I heard he may have quests available for travellers. Often times he can be found in the local pub - the Python Pit", "Easy", "Low", "Nothing");
   });
 
   it("task has name", function(){
@@ -12,7 +12,7 @@ describe("Task Tests", function(){
   })
 
   it("task has description", function(){
-    assert.deepEqual("Travel to Skurdurf and find the barbarian zsolt. I heard he may have quests available for travellers. Often times he can be found in the local pub - the Python Pit", this.task.description);
+    assert.deepEqual("Travel to Skurdurf and find the barbarian Zsolt. I heard he may have quests available for travellers. Often times he can be found in the local pub - the Python Pit", this.task.description);
   })
 
   it("task has difficulty", function(){
