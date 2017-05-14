@@ -14,6 +14,10 @@ var Hero = function(name, favFood){
     strength : {
       level: 1, 
       toLvl: 100
+    },
+    weapons : {
+      level: 1,
+      toLvl: 100
     }
   }
 }
@@ -63,10 +67,22 @@ Hero.prototype = {
     this.toLvl = (this.level * 100) + num;
   },
   attack: function(target){
+    var leftHandDamage = 0;
+    var rightHandDamage = 0;
     if(this.leftHand === undefined && this.rightHand === undefined){
       var damage = this.skills.strength.level * 5
       target.updateHealth(damage);
       this.updateToSkillLvl(5, "strength");
+    } else {
+      if(this.leftHand !== undefined && this.leftHand.damage !== undefined){
+        leftHandDamage = this.leftHand.damage;
+      }
+      if(this.rightHand !== undefined && this.rightHand.damage !== undefined){
+        rightHandDamage = this.rightHand.damage;
+      }
+      damage = (this.skills.weapons.level + leftHandDamage + rightHandDamage) * 5
+      target.updateHealth(damage);
+      this.updateToSkillLvl(5, "weapons");
     }
   },
   equipLeft: function(weapon){

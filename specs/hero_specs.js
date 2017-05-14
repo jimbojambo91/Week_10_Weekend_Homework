@@ -136,6 +136,12 @@ describe("Hero Tests", function(){
     assert.deepEqual(this.weapon, this.hero.bag[0])
   })
 
+  it("hero can attack with weapon", function(){
+    this.hero.equipLeft(this.weapon); 
+    this.hero.attack(this.chicken);
+    assert.deepEqual(-35, this.chicken.health);
+  })
+
 
 
 
