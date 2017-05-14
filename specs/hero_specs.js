@@ -117,6 +117,11 @@ describe("Hero Tests", function(){
     assert.deepEqual(this.weapon, this.hero.leftHand);
   })
 
+  it("hero cannot equip non weapon", function(){
+    this.hero.equipLeft(this.chicken);
+    assert.deepEqual(undefined, this.hero.leftHand);
+  })
+
   it("hero can dual-wield", function(){
     this.hero.equipLeft(this.weapon);
     this.hero.equipRight(this.weapon2);
