@@ -122,8 +122,13 @@ describe("Hero Tests", function(){
     this.hero.equipRight(this.weapon2);
     assert.deepEqual(this.weapon, this.hero.leftHand);
     assert.deepEqual(this.weapon2, this.hero.rightHand);
-    console.log(this.hero.leftHand.name)
-    console.log(this.hero.rightHand.name)
+  })
+
+  it("hero can cycle weapons", function(){
+    this.hero.equipLeft(this.weapon);
+    this.hero.equipLeft(this.weapon2);
+    assert.deepEqual(this.weapon2, this.hero.leftHand);
+    assert.deepEqual(this.weapon, this.hero.bag[0])
   })
 
 
