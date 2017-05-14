@@ -63,10 +63,10 @@ Hero.prototype = {
     this.toLvl = (this.level * 100) + num;
   },
   attack: function(target){
-    if(leftHand === undefined && rightHand === undefined){
+    if(this.leftHand === undefined && this.rightHand === undefined){
       var damage = this.skills.strength.level * 5
       target.updateHealth(damage);
-      setToSkillLvl(5, "strength")
+      this.updateToSkillLvl(5, "strength");
     }
   }
 }

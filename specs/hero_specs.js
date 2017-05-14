@@ -103,6 +103,12 @@ describe("Hero Tests", function(){
     assert.deepEqual(2, this.hero.skills.strength.level);
   })
 
+  it("hero can attack chicken", function(){
+    this.hero.attack(this.chicken);
+    assert.deepEqual(95, this.hero.skills.strength.toLvl);
+    assert.deepEqual(15, this.chicken.health);
+  })
+
 
 
 
