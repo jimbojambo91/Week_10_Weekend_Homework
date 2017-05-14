@@ -4,6 +4,7 @@ var Food = require('../food.js')
 var Task = require('../task.js')
 var Location = require('../location.js')
 var Chicken = require('../chicken.js')
+var Weapon = require('../weapon.js')
 
 describe("Hero Tests", function(){
 
@@ -15,6 +16,8 @@ describe("Hero Tests", function(){
     this.food2 = new Food("Rack of Ribs", 10);
     this.task = new Task("Locate Zsolt the Barbarian", "Travel to Skurdurf and find the barbarian Zsolt. I heard he may have quests available for travellers. Often times he can be found in the local pub - the Python Pit", "Easy", "Low", "Nothing");
     this.chicken = new Chicken();
+    this.weapon = new Weapon("Sword", "Iron", 10, 15, 20.00 );
+    this.weapon2 = new Weapon("Axe", "Iron", 10, 20, 20.00 );
     this.hero.currentLocation = this.location;
     this.location.addlinkedLocations(this.location2);
     this.location2.addlinkedLocations(this.location);
@@ -107,6 +110,20 @@ describe("Hero Tests", function(){
     this.hero.attack(this.chicken);
     assert.deepEqual(95, this.hero.skills.strength.toLvl);
     assert.deepEqual(15, this.chicken.health);
+  })
+
+  it("hero can equip weapon", function(){
+    this.hero.equipLeft(this.weapon);
+    assert.deepEqual(this.weapon, this.hero.leftHand);
+  })
+
+  it("hero can dual-wield", function(){
+    this.hero.equipLeft(this.weapon);
+    this.hero.equipRight(this.weapon2);
+    assert.deepEqual(this.weapon, this.hero.leftHand);
+    assert.deepEqual(this.weapon2, this.hero.rightHand);
+    console.log(this.hero.leftHand.name)
+    console.log(this.hero.rightHand.name)
   })
 
 
