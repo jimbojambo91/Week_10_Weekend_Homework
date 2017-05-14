@@ -68,6 +68,55 @@ Hero.prototype = {
       target.updateHealth(damage);
       this.updateToSkillLvl(5, "strength");
     }
+  },
+  equipLeft: function(weapon){
+    if(weapon.damage !== undefined){
+      switch (this.leftHand){
+        case undefined: 
+          if(this.rightHand === undefined){
+            this.leftHand = weapon;
+            break;
+          }
+          if(this.rightHand.type !== "Long Sword") {
+            this.leftHand = weapon;
+            break;
+          } else {
+              return "Hero must unequip Long Sword"
+          }
+        default:
+          this.addToBag(this.leftHand);
+          this.leftHand = weapon; 
+      }
+    } else {
+      return "Only weapons can be equipped"
+    }
+    
+  },
+  equipRight: function(weapon){
+    if(weapon.damage !== undefined){
+      switch (this.rightHand){
+        case undefined: 
+          if(this.leftHand === undefined){
+            this.rightHand = weapon;
+            break;
+          }
+          if(this.leftHand.type !== "Long Sword") {
+            this.rightHand = weapon;
+            break;
+          } else {
+              return "Hero must unequip Long Sword"
+          }
+        case !undefined: 
+          addToBag(getRightHand());
+          this.rightHand = weapon; 
+      }
+    } else {
+      return "Only weapons can be equipped"
+    }
+    
+  },
+  addToBag: function(item){
+    this.bag.push(item);
   }
 }
 
