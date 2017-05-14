@@ -39,18 +39,18 @@ Hero.prototype = {
       this.currentLocation = location;
       return this.name + " travelled to " + location.name;
     } else{
-      return "You cannot there at this moment in time"
+      return "You cannot travel there at this moment in time"
     }
   },
   updateToSkillLvl: function(num, toChange){
     this.skills[toChange].toLvl -= num;
-    if(this.toLvl <= 0){
-      this.level++;
-      this.setToLvl(this.toLvl);
+    if(this.skills[toChange].toLvl <= 0){
+      this.skills[toChange].level++;
+      this.setToSkillLvl(this.skills[toChange].toLvl, toChange);
     }
   },
-  setToSkillLvl: function(num){
-    this.toLvl = (this.level * 100) + num;
+  setToSkillLvl: function(num, toChange){
+    this.skills[toChange].toLvl = (this.skills[toChange].level * 100) + num;
   },
   updateToLvl: function(num, toChange){
     this.toLvl -= num;
@@ -61,6 +61,13 @@ Hero.prototype = {
   },
   setToLvl: function(num){
     this.toLvl = (this.level * 100) + num;
+  },
+  attack: function(target){
+    if(leftHand === undefined && rightHand === undefined){
+      var damage = this.skills.strength.level * 5
+      target.updateHealth(damage);
+      setToSkillLvl(5, "strength")
+    }
   }
 }
 

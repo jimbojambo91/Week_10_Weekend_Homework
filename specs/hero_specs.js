@@ -3,6 +3,7 @@ var Hero = require('../hero.js')
 var Food = require('../food.js')
 var Task = require('../task.js')
 var Location = require('../location.js')
+var Chicken = require('../chicken.js')
 
 describe("Hero Tests", function(){
 
@@ -13,6 +14,7 @@ describe("Hero Tests", function(){
     this.food = new Food("Chicken", 10);
     this.food2 = new Food("Rack of Ribs", 10);
     this.task = new Task("Locate Zsolt the Barbarian", "Travel to Skurdurf and find the barbarian Zsolt. I heard he may have quests available for travellers. Often times he can be found in the local pub - the Python Pit", "Easy", "Low", "Nothing");
+    this.chicken = new Chicken();
     this.hero.currentLocation = this.location;
     this.location.addlinkedLocations(this.location2);
     this.location2.addlinkedLocations(this.location);
