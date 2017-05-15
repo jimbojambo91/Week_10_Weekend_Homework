@@ -133,6 +133,15 @@ Hero.prototype = {
   },
   addToBag: function(item){
     this.bag.push(item);
+  },
+  getTotalCarryWeight: function(){
+    var total = 0;
+    this.bag.forEach(function(item){
+      total += item.weight;
+    })
+    total += (this.leftHand !== undefined) ? this.leftHand.weight : 0;
+    total += (this.rightHand !== undefined) ? this.rightHand.weight : 0;
+    return total;
   }
 }
 

@@ -149,6 +149,14 @@ describe("Hero Tests", function(){
     console.log(weapon3);
   })
 
+  it("hero can get total weight", function(){
+    this.hero.equipLeft(this.weapon); 
+    this.hero.addToBag(this.weapon2);
+    assert.deepEqual(35, this.hero.getTotalCarryWeight());
+  })
+
+
+
 
 
 
