@@ -5,6 +5,7 @@ var Task = require('../task.js')
 var Location = require('../location.js')
 var Chicken = require('../chicken.js')
 var Weapon = require('../weapon.js')
+var WeaponFactory = require('../weapon_factory.js')
 
 describe("Hero Tests", function(){
 
@@ -18,6 +19,7 @@ describe("Hero Tests", function(){
     this.chicken = new Chicken();
     this.weapon = new Weapon("Sword", "Iron", 10, 15, 20.00 );
     this.weapon2 = new Weapon("Axe", "Iron", 10, 20, 20.00 );
+    this.weaponFactory = new WeaponFactory();
     this.hero.currentLocation = this.location;
     this.location.addlinkedLocations(this.location2);
     this.location2.addlinkedLocations(this.location);
@@ -141,6 +143,12 @@ describe("Hero Tests", function(){
     this.hero.attack(this.chicken);
     assert.deepEqual(-35, this.chicken.health);
   })
+
+  it("can produce random Iron Weapon", function(){
+    var weapon3 = this.weaponFactory.createRandomIron();
+    console.log(weapon3);
+  })
+
 
 
 
