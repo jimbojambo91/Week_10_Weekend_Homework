@@ -142,7 +142,18 @@ Hero.prototype = {
     total += (this.leftHand !== undefined) ? this.leftHand.weight : 0;
     total += (this.rightHand !== undefined) ? this.rightHand.weight : 0;
     return total;
-  }
+  },
+  filterCompletedTasks: function(){
+    return this.tasks.filter(function(task){
+      return task.completedStatus === true;
+    })
+  },
+  filterIncompleteTasks: function(){
+    return this.tasks.filter(function(task){
+      return task.completedStatus === false;
+    })
+  },
+
 }
 
 module.exports = Hero;

@@ -16,6 +16,7 @@ describe("Hero Tests", function(){
     this.food = new Food("Chicken", 10);
     this.food2 = new Food("Rack of Ribs", 10);
     this.task = new Task("Locate Zsolt the Barbarian", "Travel to Skurdurf and find the barbarian Zsolt. I heard he may have quests available for travellers. Often times he can be found in the local pub - the Python Pit", "Easy", "Low", "Nothing");
+    this.task2 = new Task("Do something else", "It will be Hard", "Hard", "High", "Lots");
     this.chicken = new Chicken();
     this.weapon = new Weapon("Sword", "Iron", 10, 15, 20.00 );
     this.weapon2 = new Weapon("Axe", "Iron", 10, 20, 20.00 );
@@ -153,6 +154,14 @@ describe("Hero Tests", function(){
     this.hero.equipLeft(this.weapon); 
     this.hero.addToBag(this.weapon2);
     assert.deepEqual(35, this.hero.getTotalCarryWeight());
+  })
+
+  it("hero can sort uncompleted tasks", function(){
+    this.hero.addTask(this.task);
+    this.task2.completedStatus = true;
+    this.hero.addTask(this.task2);
+    var result = ((this.hero.filterCompletedTasks()).length);
+    assert.deepEqual(1, result);
   })
 
 
